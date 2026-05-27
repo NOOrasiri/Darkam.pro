@@ -1,1 +1,121 @@
-
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>داركم العقارية — قريباً</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Cairo',sans-serif;background:#0A0A0A;color:#F0EDE6;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;direction:rtl;}
+.bg{position:fixed;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 30%,rgba(201,168,76,0.08),transparent 60%);z-index:0;}
+.wrap{position:relative;z-index:1;text-align:center;max-width:600px;width:100%;}
+.logo{font-size:36px;font-weight:900;color:#C9A84C;margin-bottom:6px;}
+.logo-sub{font-size:13px;color:#6B6860;margin-bottom:32px;}
+h1{font-size:clamp(32px,7vw,60px);font-weight:900;line-height:1.1;margin-bottom:14px;}
+h1 span{color:#C9A84C;}
+p{font-size:15px;color:#A8A49A;line-height:1.7;margin-bottom:36px;}
+.countdown{display:flex;gap:12px;justify-content:center;margin-bottom:36px;flex-wrap:wrap;}
+.box{background:#111318;border:1px solid rgba(201,168,76,0.2);border-radius:12px;padding:16px 14px;min-width:80px;}
+.num{font-size:clamp(28px,5vw,44px);font-weight:900;color:#C9A84C;line-height:1;}
+.lbl{font-size:11px;color:#6B6860;margin-top:4px;}
+.sep{font-size:36px;color:rgba(201,168,76,0.3);align-self:center;margin-top:-8px;}
+.bar-wrap{margin-bottom:32px;}
+.bar-top{display:flex;justify-content:space-between;font-size:12px;color:#6B6860;margin-bottom:6px;}
+.bar{height:4px;background:rgba(255,255,255,0.06);border-radius:100px;overflow:hidden;}
+.bar-fill{width:78%;height:100%;background:linear-gradient(90deg,#C9A84C,#E8C96A);border-radius:100px;}
+.notify{display:flex;gap:10px;max-width:400px;margin:0 auto 28px;flex-wrap:wrap;justify-content:center;}
+.notify input{flex:1;padding:12px 14px;background:#111318;border:1px solid rgba(201,168,76,0.2);border-radius:10px;color:#F0EDE6;font-size:14px;outline:none;font-family:'Cairo',sans-serif;direction:ltr;min-width:200px;}
+.notify button{padding:12px 20px;background:#C9A84C;color:#000;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;}
+.pwd-box{background:#111318;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:22px;max-width:340px;margin:0 auto;}
+.pwd-box h3{font-size:14px;font-weight:700;margin-bottom:4px;}
+.pwd-box p{font-size:12px;color:#6B6860;margin-bottom:14px;}
+.pwd-box input{width:100%;padding:11px;background:#1F232D;border:1px solid rgba(201,168,76,0.15);border-radius:8px;color:#F0EDE6;font-size:15px;outline:none;font-family:monospace;letter-spacing:3px;text-align:center;margin-bottom:8px;box-sizing:border-box;}
+.pwd-box button{width:100%;padding:11px;background:#C9A84C;color:#000;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Cairo',sans-serif;}
+.err{font-size:12px;color:#EF9999;margin-bottom:8px;min-height:16px;}
+.feats{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:28px;}
+.feat{display:flex;align-items:center;gap:5px;font-size:12px;color:#6B6860;}
+.dot{width:5px;height:5px;background:#C9A84C;border-radius:50%;}
+footer{position:fixed;bottom:14px;font-size:11px;color:#6B6860;}
+</style>
+</head>
+<body>
+<div class="bg"></div>
+<div class="wrap">
+  <div class="logo">🏠 داركم العقارية</div>
+  <div class="logo-sub">للوساطة والتسويق العقاري — موسى سالم عسيري</div>
+  <h1>شيء <span>مميز</span><br/>قادم قريباً</h1>
+  <p>نبني منصة عقارية متكاملة تجمع أفضل العقارات<br/>مع خدمات المعاينة والتمويل في مكان واحد</p>
+  <div class="countdown">
+    <div class="box"><div class="num" id="d">00</div><div class="lbl">يوم</div></div>
+    <div class="sep">:</div>
+    <div class="box"><div class="num" id="h">00</div><div class="lbl">ساعة</div></div>
+    <div class="sep">:</div>
+    <div class="box"><div class="num" id="m">00</div><div class="lbl">دقيقة</div></div>
+    <div class="sep">:</div>
+    <div class="box"><div class="num" id="s">00</div><div class="lbl">ثانية</div></div>
+  </div>
+  <div class="bar-wrap">
+    <div class="bar-top"><span>نسبة الإنجاز</span><span>78%</span></div>
+    <div class="bar"><div class="bar-fill"></div></div>
+  </div>
+  <div class="notify" id="nf">
+    <input type="email" id="em" placeholder="بريدك للاشعار عند الاطلاق"/>
+    <button onclick="sub()">ابلغني</button>
+  </div>
+  <div id="ok" style="display:none;background:rgba(26,158,143,0.1);border:1px solid rgba(26,158,143,0.25);border-radius:10px;padding:11px;font-size:13px;color:#6EE7B7;margin-bottom:28px;">تم التسجيل! سنبلغك فور الاطلاق</div>
+  <div class="pwd-box">
+    <h3>معاينة للفريق الداخلي</h3>
+    <p>ادخل كلمة المرور للوصول للموقع</p>
+    <input type="password" id="pw" placeholder="..." onkeydown="if(event.key==='Enter')chk()"/>
+    <div class="err" id="er"></div>
+    <button onclick="chk()">دخول</button>
+  </div>
+  <div class="feats">
+    <div class="feat"><div class="dot"></div>6 عقارات مميزة</div>
+    <div class="feat"><div class="dot"></div>حاسبة تمويل</div>
+    <div class="feat"><div class="dot"></div>لوحة تحكم</div>
+    <div class="feat"><div class="dot"></div>طلب معاينة فوري</div>
+  </div>
+</div>
+<footer>2026 داركم العقارية — موسى سالم عسيري</footer>
+<script>
+var PWD='Darkam2026';
+var LAUNCH=new Date('2026-07-01T00:00:00');
+function pad(n){return String(n).padStart(2,'0');}
+function tick(){
+  var diff=Math.max(0,Math.floor((LAUNCH-new Date())/1000));
+  document.getElementById('d').textContent=pad(Math.floor(diff/86400));
+  document.getElementById('h').textContent=pad(Math.floor(diff%86400/3600));
+  document.getElementById('m').textContent=pad(Math.floor(diff%3600/60));
+  document.getElementById('s').textContent=pad(diff%60);
+}
+tick();setInterval(tick,1000);
+async function sub(){
+ var v=document.getElementById('em').value.trim();
+  if(!v.includes('@'))return;
+  const res=await fetch('https://eazioqgheynrqjkbhowi.supabase.co/rest/v1/subscribers',{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVhemlvcWdoZXlucnFqa2Job3dpIiwicm9sZSI6ImFub24iLCJpYXQiOj',
+      'Prefer':'return=minimal'
+    },
+    body:JSON.stringify({email:v})
+  });
+  if(res.ok||res.status===409){
+    document.getElementById('nf').style.display='none';
+    document.getElementById('ok').style.display='block';
+  }
+}
+ var v=document.getElementById('em').value;
+  .style.display='none';document.getElementById('ok').style.display='block';}
+}
+function chk(){
+  var v=document.getElementById('pw').value.trim();
+  if(v===PWD){alert('مرحبا! جاري التحويل...');}
+  else{document.getElementById('er').textContent='كلمة المرور غير صحيحة';document.getElementById('pw').value='';}
+}
+</script>
+</body>
+<html>
